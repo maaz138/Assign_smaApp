@@ -7,6 +7,11 @@ const postModel = sequelize.define("post",{
         type:DataTypes.STRING,
         allowNull:false,
     },
+    likeCount: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+        allowNull: false,
+      },
 
 })
 UserModel.hasMany(postModel);

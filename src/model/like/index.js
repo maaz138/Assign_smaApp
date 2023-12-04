@@ -11,6 +11,7 @@ const likeModel = sequelize.define("like",{
 });
 UserModel.hasMany(likeModel);
 likeModel.belongsTo(UserModel);
+
 postModel.hasMany(likeModel);
 likeModel.belongsTo(postModel);
 
