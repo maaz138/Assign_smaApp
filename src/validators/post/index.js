@@ -1,14 +1,13 @@
 import Joi from "joi";
-const userValidator = {
-  validateUser: (req, res, next) => {
+
+const PostValidator = {
+  validatePost: async (req, res, next) => {
     try {
       const data = req.body;
       const schema = Joi.object({
-        name: Joi.string().required(),
-        email: Joi.string().email({ minDomainSegments: 2 }).required(),
-        password: Joi.string().min(6).max(100).required(),
+        userId: Joi.number().required(),
+        content: Joi.string().min(1).max(100).required(),
       });
-
       const { error, value } = schema.validate(data);
       if (error) {
         return res.status(400).json({ messgae: "Invalid input", error });
@@ -20,4 +19,4 @@ const userValidator = {
   },
 };
 
-export default userValidator;
+export default PostValidator;
